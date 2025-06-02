@@ -1,0 +1,28 @@
+apt() {
+    case "$1" in
+        aptud) sudo apt update ;;
+        aptug) sudo apt upgrade -y ;;
+        *) apt_help ;;
+    esac
+}
+
+aptud_help() {
+    echo -e " \e[33m- aptud\t\e[32mCheck for apt update\e[0m"
+    echo -e "   usage:\tbud \e[33maptud\e[0m"
+}
+
+aptug_help() {
+    echo -e " \e[33m- aptud\t\e[32mExecute for apt upgrade\e[0m"
+    echo -e "   usage:\tbud \e[33maptud\e[0m"
+}
+
+apt_help_header() {
+    echo -e "-------------------------------------------------------"
+    echo -e " APT\t\t\e[32mUbuntu apt\e[0m"
+}
+
+apt_help() {
+    apt_help_header
+    aptud_help
+    aptug_help
+}

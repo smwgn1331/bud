@@ -7,6 +7,14 @@ done
 
 case "$1" in
     # io
+    aptud) apt "$@" ;;
     mcd|she) io "$@" ;;
+    # laravel
+    artisan) artisan "$@" ;;
+    # nginx
+    ngx) ngx "$@" ;;
+    # bud
+    update) git -C "$SCRIPT_DIR" pull origin main ;;
+    # help
     *) bud_help ;;
 esac

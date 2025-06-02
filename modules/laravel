@@ -1,0 +1,35 @@
+artisan(){
+    shift
+    case "$1" in
+        artlog) 
+            local logFile=""
+            if [ -f storage/logs/laravel.log ]; then
+                logFile="storage/logs/laravel.log"
+            else
+                logFile=$(ls -t storage/logs/laravel-*.log 2>/dev/null | head -n1)
+            fi
+
+            if [ -n "$logFile" ] && [ -e "$logFile" ]; then
+                case "$1" in clear) > "$logFile" ;; *) cat "$logFile" ;; esac
+            else
+                echo "logfile $logFile"
+            fi
+            ;;
+        *) echo "*) $1" ;;
+    esac
+}
+
+artisan_help_header() {
+    echo -e "-------------------------------------------------------"
+    echo -e " ARTISAN\t\e[32mLaravel PHP Artisan\e[0m"
+}
+
+artlog_help() {
+    echo -e " \e[33m- artlog\t\e[32mPrint laravel log\e[0m"
+    echo -e "   usage:\tbud \e[33martisan \e[36martlog\e[0m"
+}
+
+artisan_help() {
+    artisan_help_header
+    artlog_help
+}

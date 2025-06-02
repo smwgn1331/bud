@@ -25,14 +25,13 @@ she() {
 }
 
 she_help() {
-    echo -e " \e[33m- she\t\t\e[32mModify .bashrc.\e[0m"
+    echo -e " \e[33m- she\t\t\e[32mModify .bashrc\e[0m"
     echo -e "   usage:\tbud \e[33mshe\e[0m"
 }
 
 io_help_header() {
     echo -e "-------------------------------------------------------"
     echo -e " IO\t\t\e[32mFolder & Files Operations\e[0m"
-    echo -e "-------------------------------------------------------"
 }
 
 io_help() {
