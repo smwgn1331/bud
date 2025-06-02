@@ -1,7 +1,7 @@
 artisan(){
     shift
     case "$1" in
-        artlog) 
+        log|l)
             local logFile=""
             if [ -f storage/logs/laravel.log ]; then
                 logFile="storage/logs/laravel.log"
@@ -13,7 +13,7 @@ artisan(){
             if [ -n "$logFile" ] && [ -e "$logFile" ]; then
                 case "$1" in clear) > "$logFile" ;; *) cat "$logFile" ;; esac
             else
-                echo "logfile $logFile"
+                echo "Attempt to read log file: $logFile"
             fi
             ;;
         *) echo "*) $1" ;;
@@ -26,7 +26,7 @@ artisan_help_header() {
 }
 
 artlog_help() {
-    echo -e " \e[33m- artlog\t\e[32mPrint laravel log\e[0m"
+    echo -e " \e[33m- log\t\e[32mPrint laravel log\e[0m"
     echo -e "   usage:\tbud \e[33martisan \e[36martlog\e[0m"
 }
 

@@ -8,7 +8,7 @@ done
 case "$1" in
     apt*) apt "$@" ;;
     mcd|m*|she|s*) io "$@" ;;
-    artisan|ar) artisan "$@" ;;
+    artisan|a*) artisan "$@" ;;
     ngx|n*) ngx "$@" ;;
     update|u*) git -C "$SCRIPT_DIR" pull origin main ;;
     venv|v*) venv "$@" ;;

@@ -1,7 +1,7 @@
 venv(){
     shift
     case "$1" in
-        init)
+        init|i*)
             shift
             if [[ -n "$1" ]]; then
                 python3 -m venv "$1"
@@ -9,7 +9,7 @@ venv(){
                 python3 -m venv .venv
             fi
         ;;
-        activate) 
+        activate|a*) 
             shift
             if [[ -n "$1" ]]; then
                 . "$1/bin/activate"
@@ -17,7 +17,7 @@ venv(){
                 . .venv/bin/activate
             fi        
         ;;
-        clean) 
+        clean|c*)
             shift
             if [[ -n "$1" ]]; then
                 rm -r "$1"

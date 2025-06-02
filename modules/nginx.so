@@ -39,12 +39,12 @@ ngx() {
 }
 
 ngx_link_help() {
-    echo -e " \e[33m- link\t\t\e[32mEnable NGINX config (file must exists)\e[0m"
+    echo -e " \e[33m- link|li\t\e[32mEnable NGINX config (file must exists)\e[0m"
     echo -e "   usage:\tbud \e[33mngx \e[36mlink <?ARGS>\e[0m"
 }
 
 ngx_list_help(){
-    echo -e " \e[33m- list\t\t\e[32mList NGINX config (file must exists)\e[0m"
+    echo -e " \e[33m- list|ls\t\e[32mList NGINX config (file must exists)\e[0m"
     echo -e "   usage:\tbud \e[33mngx \e[36mlist <?ARGS: cfg, link>\e[0m"
 }
 
@@ -56,7 +56,7 @@ ngx_list_detail_help(){
 }
 
 ngx_rst_help() {
-    echo -e " \e[33m- rst\t\t\e[32mRestart service\e[0m"
+    echo -e " \e[33m- rst|r\t\e[32mRestart service\e[0m"
     echo -e "   usage:\tbud \e[33mngx \e[36mrst\e[0m"
 }
 
@@ -76,7 +76,7 @@ ngx_stt_help() {
 }
 
 ngx_tst_help() {
-    echo -e " \e[33m- tst\t\t\e[32mTest NGINX config files\e[0m"
+    echo -e " \e[33m- tst|t\t\t\e[32mTest NGINX config files\e[0m"
     echo -e "   usage:\tbud \e[33mngx \e[36mstr\e[0m"
 }
 

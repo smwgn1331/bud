@@ -1,7 +1,7 @@
 io(){
     case "$1" in
-        mcd) mcd "$@" ;;
-        she) she ;;
+        mcd|m*) mcd "$@" ;;
+        she|s*) she ;;
         *) echo "io $1" ;;
     esac
 }
