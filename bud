@@ -7,7 +7,7 @@ done
 
 case "$1" in
     # io
-    aptud) apt "$@" ;;
+    apt*) apt "$@" ;;
     mcd|she) io "$@" ;;
     # laravel
     artisan) artisan "$@" ;;
