@@ -1,13 +1,40 @@
 ngx() {
     shift
     case "$1" in
-        rst) sudo systemctl restart nginx ;;
+        link|li*)
+            shift
+            local configFile="/etc/nginx/sites-available/$1"
+            if [ -n "$configFile" ] && [ -e "$configFile" ]; then
+                if sudo nginx -t; then
+                    sudo ln -s "$configFile" "/etc/nginx/sites-enabled/$1"
+                    bud ngx r
+                fi
+            else
+                ngx_link_help
+            fi
+        ;;
+        unlink|unli*)
+            shift
+            local configFile="/etc/nginx/sites-enabled/$1"
+            if [ -n "$1" ] && [ -L "$configFile" ]; then
+                sudo rm "$configFile"
+                bud ngx r
+            else
+                echo "⚠️  Symlink '$configFile' tidak ditemukan."
+            fi
+        ;;
+        rst|r*) sudo systemctl restart nginx ;;
         stp) sudo systemctl stop nginx ;;
         str) sudo systemctl start nginx ;;
         stt) sudo systemctl status nginx ;;
-        tst) sudo nginx -t ;;
+        tst|t*) sudo nginx -t ;;
         *) ngx_help
     esac
+}
+
+ngx_link_help() {
+    echo -e " \e[33m- link\t\t\e[32mEnable NGINX config (file must exists)\e[0m"
+    echo -e "   usage:\tbud \e[33mngx \e[36mlink <?ARGS>\e[0m"
 }
 
 ngx_rst_help() {
@@ -42,6 +69,7 @@ ngx_header_help(){
 
 ngx_help(){
     ngx_header_help
+    ngx_link_help
     ngx_rst_help
     ngx_stp_help
     ngx_str_help

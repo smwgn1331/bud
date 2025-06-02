@@ -11,4 +11,5 @@ bud_help(){
     apt_help
     artisan_help
     ngx_help
+    venv_help
 }

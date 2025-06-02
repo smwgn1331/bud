@@ -1,0 +1,57 @@
+venv(){
+    shift
+    case "$1" in
+        init)
+            shift
+            if [[ -n "$1" ]]; then
+                python3 -m venv "$1"
+            else
+                python3 -m venv .venv
+            fi
+        ;;
+        activate) 
+            shift
+            if [[ -n "$1" ]]; then
+                . "$1/bin/activate"
+            else
+                . .venv/bin/activate
+            fi        
+        ;;
+        clean) 
+            shift
+            if [[ -n "$1" ]]; then
+                rm -r "$1"
+            else
+                rm -r .venv
+            fi
+        ;;
+        *) venv_help ;;
+    esac
+}
+
+venv_activate_help() {
+    echo -e " \e[33m- activate\t\t\e[32mActivate venv\e[0m"
+    echo -e "   usage:\tbud \e[33mvenv \e[36mactivate <?ARGS>[0m"
+}
+
+venv_clean_help() {
+    echo -e " \e[33m- clean\t\t\e[32mClean .venv or <?ARGS>\e[0m"
+    echo -e "   usage:\tbud \e[33mvenv \e[36mclean <?ARGS>[0m"
+}
+
+venv_init_help() {
+    echo -e " \e[33m- init\t\t\e[32mCreate venv in current folder\e[0m"
+    echo -e "   usage:\tbud \e[33mvenv\e \e[36m<?ARGS>[0m"
+}
+
+venv_help_header() {
+    echo -e "-------------------------------------------------------"
+    echo -e " VENV\t\t\e[32mPython Virtual Environment\e[0m"
+}
+
+venv_help() {
+    venv_help_header
+    venv_init_help
+    venv_activate_help
+    venv_clean_help
+}

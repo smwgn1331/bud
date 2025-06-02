@@ -9,6 +9,7 @@ artisan(){
                 logFile=$(ls -t storage/logs/laravel-*.log 2>/dev/null | head -n1)
             fi
 
+            shift
             if [ -n "$logFile" ] && [ -e "$logFile" ]; then
                 case "$1" in clear) > "$logFile" ;; *) cat "$logFile" ;; esac
             else
