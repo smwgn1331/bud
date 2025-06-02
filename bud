@@ -1,0 +1,12 @@
+SCRIPT_PATH="${BASH_SOURCE[0]}"
+SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
+
+for file in "$SCRIPT_DIR"/modules/*; do
+    [[ "$file" != "$SCRIPT_PATH" ]] && [ -f "$file" ] && . "$file"
+done
+
+case "$1" in
+    # io
+    mcd|she) io "$@" ;;
+    *) bud_help ;;
+esac

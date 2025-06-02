@@ -1,0 +1,8 @@
+bud_help(){
+    echo -e "======================================================="
+    echo -e "                     COMMANDMENTS"
+    echo -e "       \e[32mA set of some (probably) helpful commands.\e[0m"
+    echo -e "-------------------------------------------------------"
+    echo -e " USAGE:\t\tbud \e[33m<command> \e[36m<?ARGS>\e[37m"
+    io_help
+}

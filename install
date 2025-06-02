@@ -1,0 +1,17 @@
+mkdir -p .config && cd .config
+
+git clone https://github.com/smwgn1331/bud.git
+
+LINE="bud() { . /home/$USER/.config/bud/bud \"\$@\"; }"
+BASHRC="$HOME/.bashrc"
+
+# Check if line already exists
+if grep -Fxq "$LINE" "$BASHRC"; then
+    echo "✅ Already installed"
+else
+    echo "$LINE" >> "$BASHRC"
+    echo "✅ Installed successfuly"
+fi
+
+echo "👉 Run: source ~/.bashrc or restart your terminal to apply it"
+echo "👉 Next: Type 'bud' (without quote) then hit Enter"

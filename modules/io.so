@@ -1,0 +1,40 @@
+io(){
+    case "$1" in
+        mcd) mcd "$@" ;;
+        she) she ;;
+        *) echo "io $1" ;;
+    esac
+}
+
+mcd() {
+    shift
+    if [[ -n "$1" ]]; then
+        mkdir -p "$1" && cd "$1" && echo -e "✅\e[32m OK."
+    else
+        io_help_header && mcd_help
+    fi
+}
+
+mcd_help() {
+    echo -e " \e[33m- mcd\t\t\e[32mCreate folder and cd to it.\e[0m"
+    echo -e "   usage:\tbud \e[33mmcd \e[36m<foldername>\e[0m"
+}
+
+she() {
+    nano ~/.bashrc && source ~/.bashrc && echo -e "✅ Reloaded."
+}
+
+she_help() {
+    echo -e " \e[33m- she\t\t\e[32mModify .bashrc.\e[0m"
+    echo -e "   usage:\tbud \e[33mshe\e[0m"
+}
+
+io_help_header() {
+    echo -e "-------------------------------------------------------"
+    echo -e " IO\t\t\e[32mFolder & Files Operations\e[0m"
+    echo -e "-------------------------------------------------------"
+}
+
+io_help() {
+    io_help_header && mcd_help && she_help
+}
