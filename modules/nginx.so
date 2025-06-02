@@ -4,6 +4,7 @@ ngx() {
         rst) sudo systemctl restart nginx ;;
         stp) sudo systemctl stop nginx ;;
         str) sudo systemctl start nginx ;;
+        stt) sudo systemctl status nginx ;;
         tst) sudo nginx -t ;;
         *) ngx_help
     esac
@@ -24,6 +25,11 @@ ngx_str_help() {
     echo -e "   usage:\tbud \e[33mngx \e[36mstr\e[0m"
 }
 
+ngx_stt_help() {
+    echo -e " \e[33m- stt\t\t\e[32mCheck for NGINX service status\e[0m"
+    echo -e "   usage:\tbud \e[33mngx \e[36mstt\e[0m"
+}
+
 ngx_tst_help() {
     echo -e " \e[33m- tst\t\t\e[32mTest NGINX config files\e[0m"
     echo -e "   usage:\tbud \e[33mngx \e[36mstr\e[0m"
@@ -39,5 +45,6 @@ ngx_help(){
     ngx_rst_help
     ngx_stp_help
     ngx_str_help
+    ngx_stt_help
     ngx_tst_help
 }
