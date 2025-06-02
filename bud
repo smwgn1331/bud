@@ -6,17 +6,11 @@ for file in "$SCRIPT_DIR"/modules/*; do
 done
 
 case "$1" in
-    # io
     apt*) apt "$@" ;;
-    mcd|she) io "$@" ;;
-    # laravel
-    artisan) artisan "$@" ;;
-    # nginx
-    ngx) ngx "$@" ;;
-    # bud
-    update) git -C "$SCRIPT_DIR" pull origin main ;;
-    # venv
-    venv) venv "$@" ;;
-    # help
+    mcd|m*|she|s*) io "$@" ;;
+    artisan|ar) artisan "$@" ;;
+    ngx|n*) ngx "$@" ;;
+    update|u*) git -C "$SCRIPT_DIR" pull origin main ;;
+    venv|v*) venv "$@" ;;
     *) bud_help ;;
 esac

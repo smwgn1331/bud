@@ -1,7 +1,7 @@
 ngx() {
     shift
     case "$1" in
-        link|li*)
+        link|lin)
             shift
             local configFile="/etc/nginx/sites-available/$1"
             if [ -n "$configFile" ] && [ -e "$configFile" ]; then
@@ -12,6 +12,12 @@ ngx() {
             else
                 ngx_link_help
             fi
+        ;;
+        list|ls)
+        case "$@" in  
+            cfg) sudo ls /etc/nginx/sites-available ;; 
+            link) sudo ls /etc/nginx/sites-enabled ;; 
+            *) (ngx_h_header && ngx_list_detail_help) ;; esac
         ;;
         unlink|unli*)
             shift
@@ -35,6 +41,18 @@ ngx() {
 ngx_link_help() {
     echo -e " \e[33m- link\t\t\e[32mEnable NGINX config (file must exists)\e[0m"
     echo -e "   usage:\tbud \e[33mngx \e[36mlink <?ARGS>\e[0m"
+}
+
+ngx_list_help(){
+    echo -e " \e[33m- list\t\t\e[32mList NGINX config (file must exists)\e[0m"
+    echo -e "   usage:\tbud \e[33mngx \e[36mlist <?ARGS: cfg, link>\e[0m"
+}
+
+ngx_list_detail_help(){
+    ngx_list_help
+    echo -e "   \e[36margs:"
+    echo -e "   \e[36m- cfg\t\e[32mlist configuration file"
+    echo -e "   \e[36m- link\t\e[32mlist enabled configuration file\e[0m"
 }
 
 ngx_rst_help() {
@@ -70,6 +88,7 @@ ngx_header_help(){
 ngx_help(){
     ngx_header_help
     ngx_link_help
+    ngx_list_help
     ngx_rst_help
     ngx_stp_help
     ngx_str_help
