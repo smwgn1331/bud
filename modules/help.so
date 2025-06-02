@@ -4,6 +4,9 @@ bud_help(){
     echo -e "           \e[32mSome (probably) helpful commands.\e[0m"
     echo -e "-------------------------------------------------------"
     echo -e " USAGE:\t\tbud \e[33m<command> \e[36m<?ARGS>\e[37m"
+    echo -e "-------------------------------------------------------"
+    echo -e " \e[33m- update\t\e[32mCheck for new commands\e[0m"
+    echo -e "   usage:\tbud \e[33mupdate\e[0m"
     io_help
     apt_help
     artisan_help
