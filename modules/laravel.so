@@ -11,12 +11,21 @@ artisan(){
 
             shift
             if [ -n "$logFile" ] && [ -e "$logFile" ]; then
-                case "$1" in clear) > "$logFile" ;; *) cat "$logFile" ;; esac
+                case "$1" in clear|c) > "$logFile" ;; *) cat "$logFile" ;; esac
             else
                 echo "Attempt to read log file: $logFile"
             fi
             ;;
-        *) echo "*) $1" ;;
+        make|mk)
+            shift
+            case "$1" in
+                model|md) php artisan make:model ;;
+                controller|ctrl) php artisan make:controller ;;
+            esac
+        ;;
+        serve|s*) php artisan serve ;;
+        help) artisan_help ;;
+        *) php artisan "$@" ;;
     esac
 }
 
@@ -26,7 +35,7 @@ artisan_help_header() {
 }
 
 artlog_help() {
-    echo -e " \e[33m- log\t\e[32mPrint laravel log\e[0m"
+    echo -e " \e[33m- log|l\t\e[32mPrint laravel log\e[0m"
     echo -e "   usage:\tbud \e[33martisan \e[36martlog\e[0m"
 }
 

@@ -15,9 +15,9 @@ ngx() {
         ;;
         list|ls)
         case "$@" in  
-            cfg) sudo ls /etc/nginx/sites-available ;; 
-            link) sudo ls /etc/nginx/sites-enabled ;; 
-            *) (ngx_h_header && ngx_list_detail_help) ;; esac
+            cfg|c*) sudo ls /etc/nginx/sites-available ;; 
+            link|l*) sudo ls /etc/nginx/sites-enabled ;; 
+            *) (ngx_header_help && ngx_list_detail_help) ;; esac
         ;;
         unlink|unli*)
             shift

@@ -7,6 +7,7 @@ done
 
 case "$1" in
     apt*) apt "$@" ;;
+    clear|c*) clear ;;
     mcd|m*|she|s*) io "$@" ;;
     artisan|a*) artisan "$@" ;;
     ngx|n*) ngx "$@" ;;
