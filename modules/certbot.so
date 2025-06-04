@@ -1,0 +1,15 @@
+certbot() {
+    shift
+    case "$1" in
+        list|ls) sudo certbot certificates ;;
+        generate|g*)
+            shift
+            if [[ -n "$1" ]]; then
+                sudo certbot certonly --dns-cloudflare --email weegen16@gmail.com --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini  -d "*.$1" -d "$1"
+            else
+                echo -e "Domain not specified"
+            fi
+            ;;
+        *) echo "invalid" ;;
+    esac
+}

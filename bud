@@ -7,10 +7,12 @@ done
 
 case "$1" in
     apt*) apt "$@" ;;
-    clear|c*) clear ;;
+    certbot|cb) certbot "$@" ;;
+    clear|cl) clear ;;
     mcd|m*|she|s*) io "$@" ;;
     artisan|a*) artisan "$@" ;;
     ngx|n*) ngx "$@" ;;
+    svc|s*) svc "$@" ;;
     update|u*) git -C "$SCRIPT_DIR" pull origin main ;;
     venv|v*) venv "$@" ;;
     *) bud_help ;;

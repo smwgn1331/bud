@@ -23,6 +23,7 @@ artisan(){
                 controller|ctrl) php artisan make:controller ;;
             esac
         ;;
+        pint|p*) ./vendor/bin/pint ;;
         serve|s*) php artisan serve ;;
         help) artisan_help ;;
         *) php artisan "$@" ;;

@@ -1,0 +1,32 @@
+svc(){
+    shift
+    case "$1" in
+        disable|down)
+            shift
+            sudo systemctl disable "$1"
+        ;;
+        enable|up)
+            shift
+            sudo systemctl enable "$1"
+        ;;
+        reload|rld)
+            sudo systemctl daemon-reload
+        ;;
+        restart|rst)
+            shift
+            sudo systemctl restart "$1"
+        ;;
+        start|str)
+            shift
+            sudo systemctl start "$1"
+        ;;
+        stop|stp)
+            shift
+            sudo systemctl stop "$1"
+        ;;
+        status|stt)
+            shift
+            sudo systemctl status "$1"
+        ;;
+    esac
+}
